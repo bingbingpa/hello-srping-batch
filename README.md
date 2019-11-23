@@ -14,4 +14,5 @@
 - Chunk Size와 Page Size의 값은 일치시키는게 보편적으로 좋은 방법이다. 
 - Srping Batch는 Cursor, Paging 2개의 Reader 타입을 지원한다. Cursor는 하나의 Connection으로 Batch가 끝날때까지 사용되기 때문에 Batch가 끝나기전에 Database와 어플리케이션의 Connection이 먼저 끊어질수도 있다. 그래서 Batch 수행 시간이 오래 걸리는 경우에는 PagingItemReader를 사용하는게 낫다.
 - PagingItemReader를 사용할 때는 무조건 Order를 포함해야 한다. 
-
+- wirter에는 setAssertUpdates(false)를 주면 transaction관련 오류를 해결 할 수 있다.
+- Writer에서 계속 무한루프가 돈다면 ItemReader에서 select하는 쿼리에 페이징 처리를 해야한다. 페이징이 없을 경우 같은 데이터를 계속해서 wirte한다.
